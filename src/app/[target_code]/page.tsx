@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
+import { ChiSquareDisease, ChiSquareDrug, ChiSquareMedicalProcedures, ChiSquareSpecificDevice } from "@/types/database";
 
 type Props = {
   params: { target_code: string }
@@ -74,7 +75,7 @@ export default async function DetailPage({ params }: Props) {
               </tr>
             </thead>
             <tbody>
-              {disease?.map((d: any) => (
+              {disease?.map((d: ChiSquareDisease) => (
                 <tr key={d.disease_code}>
                   <td>{d.disease_code}</td>
                   <td>{d.disease_name}</td>
@@ -92,7 +93,7 @@ export default async function DetailPage({ params }: Props) {
               </tr>
             </thead>
             <tbody>
-              {drug?.map((d: any) => (
+              {drug?.map((d: ChiSquareDrug) => (
                 <tr key={d.drug_code}>
                   <td>{d.drug_code}</td>
                   <td>{d.drug_name}</td>
@@ -111,7 +112,7 @@ export default async function DetailPage({ params }: Props) {
               </tr>
             </thead>
             <tbody>
-              {procedures?.map((p: any) => (
+              {procedures?.map((p: ChiSquareMedicalProcedures) => (
                 <tr key={p.procedure_code}>
                   <td>{p.procedure_code}</td>
                   <td>{p.procedure_name}</td>
@@ -130,7 +131,7 @@ export default async function DetailPage({ params }: Props) {
               </tr>
             </thead>
             <tbody>
-              {device?.map((d: any) => (
+              {device?.map((d: ChiSquareSpecificDevice) => (
                 <tr key={d.specific_device_code}>
                   <td>{d.specific_device_code}</td>
                   <td>{d.specific_device_name}</td>
