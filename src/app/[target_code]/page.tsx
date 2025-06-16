@@ -3,11 +3,11 @@ import { supabase } from "../../lib/supabaseClient";
 import { ChiSquareDisease, ChiSquareDrug, ChiSquareMedicalProcedures, ChiSquareSpecificDevice } from "@/types/database";
 
 type Props = {
-  params: { target_code: string }
+  params: Promise<{ target_code: string }>
 };
 
 export default async function DetailPage({ params }: Props) {
-  const { target_code } = params;
+  const { target_code } = await params;
 
   // santei_flag
   const { data: santei, error: santeiError } = await supabase
